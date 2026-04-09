@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Müller Breitmeier Steuerberater - Ihr Partner in Hannover</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-font: 'DM Sans', sans-serif;
+            --heading-font: 'Cormorant Garamond', serif;
+            --accent-color: #C8A97E;
+            --text-color: #1A1A1A;
+            --bg-white: #FFFFFF;
+            --bg-light-gray: #F5F5F5;
+            --bg-body: #FAFAFA;
+            --nav-bg-scroll: rgba(255, 255, 255, 0.8);
+            --nav-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --button-shadow: 0 4px 12px rgba(200, 169, 126, 0.3);
+            --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --quote-border-color: var(--accent-color);
+            --cookie-banner-bg: var(--text-color);
+            --cookie-banner-text: var(--bg-white);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--primary-font);
+            color: var(--text-color);
+            background-color: var(--bg-body);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--heading-font);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
+        h4 { font-size: 1.4rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #a38b5d;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--bg-white);
+            backdrop-filter: blur(10px);
+        }
+
+        nav.scrolled {
+            background-color: var(--nav-bg-scroll);
+            box-shadow: var(--nav-shadow);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            font-style: italic;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            background-color: var(--accent-color);
+            color: var(--bg-white);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: var(--button-shadow);
+        }
+
+        .cta-button:hover {
+            background-color: #a38b5d;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80vh;
+            padding-top: 100px; /* For fixed nav */
+            background-color: var(--bg-white);
+        }
+
+        .hero-content {
+            flex-basis: 55%;
+            padding-right: 50px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-image {
+            flex-basis: 45%;
+            position: relative;
+        }
+
+        .hero-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .stats-bar {
+            background-color: var(--bg-light-gray);
+            padding: 25px 0;
+            margin-top: 50px;
+        }
+
+        .stats-bar .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0;
+            color: var(--text-color);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--bg-white);
+            padding: 80px 0;
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--bg-white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-card svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            fill: var(--accent-color);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background-color: var(--bg-light-gray);
+            padding: 80px 0;
+        }
+
+        .quote-wrapper {
+            text-align: center;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .quote-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--quote-border-color);
+        }
+
+        .quote-text {
+            font-family: var(--heading-font);
+            font-size: 2.2rem;
+            font-style: italic;
+            line-height: 1.5;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--bg-white);
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex-basis: 45%;
+        }
+
+        .about-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .about-content {
+            flex-basis: 55%;
+        }
+
+        .about-content h2 {
+            margin-bottom: 30px;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--bg-light-gray);
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-form {
+            background-color: var(--bg-white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-form h3 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--primary-font);
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: var(--bg-white);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: var(--button-shadow);
+        }
+
+        .contact-form button:hover {
+            background-color: #a38b5d;
+            transform: translateY(-2px);
+        }
+
+        .contact-map {
+            background-color: var(--bg-white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-map h3 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-color);
+            color: var(--bg-white);
+            padding: 60px 0;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+        }
+
+        .footer-logo h3 {
+            font-family: var(--heading-font);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links ul,
+        .footer-contact ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li,
+        .footer-contact li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a,
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .footer-links a:hover,
+        .footer-contact a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-contact a {
+            color: var(--bg-white);
+            font-weight: 600;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--cookie-banner-bg);
+            color: var(--cookie-banner-text);
+            padding: 20px 0;
+            text-align: center;
+            z-index: 1001;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-out;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-banner .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cookie-banner p {
+            margin-bottom: 0;
+            font-size: 1rem;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .cookie-banner a {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .cookie-banner button {
+            background-color: var(--accent-color);
+            color: var(--bg-white);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #a38b5d;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
+
+            nav .container {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none; /* Hidden by default, shown by JS */
+            }
+
+            .hamburger {
+                display: block;
+                cursor: pointer;
+                padding: 10px;
+            }
+
+            .hamburger .line {
+                width: 25px;
+                height: 3px;
+                background-color: var(--text-color);
+                margin: 5px 0;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active .line:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .line:nth-child(2) {
+                opacity: 1;
+            }
+            .hamburger.active .line:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--bg-white);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-out;
+                z-index: 999;
+            }
+
+            .mobile-menu.active {
+                transform: translateX(0);
+            }
+
+            .mobile-menu li {
+                margin-bottom: 25px;
+            }
+
+            .mobile-menu a {
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                min-height: auto;
+                padding-top: 80px;
+            }
+
+            .hero-content {
+                flex-basis: 100%;
+                padding-right: 0;
+                margin-top: 30px;
+            }
+
+            .hero-image {
+                flex-basis: 100%;
+                margin-bottom: 30px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .stats-bar .container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+
+            .stat-item {
+                flex-basis: 45%;
+            }
+
+            .service-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                flex-direction: column;
+            }
+
+            .about-image, .about-content {
+                flex-basis: 100%;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-logo, .footer-links, .footer-contact {
+                margin-bottom: 30px;
+            }
+
+            .cookie-banner .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-banner p {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Fade-in on scroll */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo">Müller Breitmeier</a>
+            <ul class="nav-links">
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#ueber-uns">Über uns</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <a href="#kontakt" class="cta-button">Termin vereinbaren</a>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <li><a href="#leistungen">Leistungen</a></li>
+            <li><a href="#ueber-uns">Über uns</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#kontakt" class="cta-button">Termin vereinbaren</a></li>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ihr finanzieller Kompass in Hannover</h1>
+                <p>Vertrauen Sie auf Müller Breitmeier Steuerberater für maßgeschneiderte Lösungen, die Ihr Vermögen schützen und Ihr Wachstum fördern.</p>
+                <div class="hero-buttons">
+                    <a href="#kontakt" class="cta-button">Beratung anfordern</a>
+                    <a href="tel:+05113642430" class="cta-button" style="background-color: #E0E0E0; color: var(--text-color);">0511 3642430</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-qWwpHwip31M?w=1200&h=800&fit=crop&q=80&auto=format" alt="Müller Breitmeier Steuerberater Hannover">
+            </div>
+        </div>
+    </section>
+    <section class="stats-bar fade-in">
+        <div class="container">
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Jahre Erfahrung</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Zufriedene Mandanten</p>
+            </div>
+            <div class="stat-item">
+                <h3>5.0 ★</h3>
+                <p>9 Bewertungen</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="leistungen">
+        <div class="container">
+            <h2>Unsere Leistungen</h2>
+            <div class="service-cards">
+                <div class="service-card fade-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-6v2h6v-8z"/>
+                    </svg>
+                    <h3>Steuerberatung</h3>
+                    <p>Individuelle Strategien zur Steueroptimierung für Privatpersonen und Unternehmen.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-6v2h6v-8z"/>
+                    </svg>
+                    <h3>Buchhaltung & Jahresabschlüsse</h3>
+                    <p>Präzise Finanzbuchhaltung und aussagekräftige Jahresabschlüsse.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-6v2h6v-8z"/>
+                    </svg>
+                    <h3>Existenzgründungsberatung</h3>
+                    <p>Professionelle Unterstützung bei der Gründung Ihres Unternehmens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-wrapper fade-in">
+                <p class="quote-text">"Müller Breitmeier hat meine Steuerangelegenheiten revolutioniert. Klare Beratung, exzellente Ergebnisse."</p>
+                <p class="quote-author">- Ein zufriedener Mandant</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="ueber-uns">
+        <div class="container">
+            <div class="about-image fade-in">
+                <img src="https://images.unsplash.com/photo-5fNmWej4tAA?w=1200&h=800&fit=crop&q=80&auto=format" alt="Büro Müller Breitmeier Steuerberater">
+            </div>
+            <div class="about-content fade-in">
+                <h2>Ihr Vertrauen, unsere Expertise</h2>
+                <p>Seit vielen Jahren steht Müller Breitmeier Steuerberater für Kompetenz und Verlässlichkeit im Herzen von Hannover. Wir sind mehr als nur Steuerberater – wir sind Ihr Partner, der sich mit Leidenschaft um Ihre finanzielle Zukunft kümmert. Unser erfahrenes Team setzt auf transparente Kommunikation und individuelle Lösungen, um Ihre steuerlichen Ziele zu erreichen.</p>
+                <p>Wir verstehen die Herausforderungen, denen sich Privatpersonen und Unternehmen heute stellen müssen. Deshalb bieten wir Ihnen nicht nur fundierte Fachkenntnisse, sondern auch ein offenes Ohr für Ihre Anliegen. Ihr Erfolg ist unser Ansporn.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontakt">
+        <div class="container">
+            <div class="contact-form fade-in">
+                <h3>Kontaktieren Sie uns</h3>
+                <form id="contactForm">
+                    <input type="text" name="name" placeholder="Ihr Name" required>
+                    <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required>
+                    <textarea name="message" placeholder="Ihre Nachricht" required></textarea>
+                    <button type="submit">Nachricht senden</button>
+                </form>
+            </div>
+            <div class="contact-map fade-in">
+                <h3>Anfahrt & Standort</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2426.100380688671!2d9.735263015779313!3d52.37363567977009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b050672513e997%3A0x1e1c0b3e7f7c7b2!2sM%C3%BCller%20Breitmeier%20Steuerberater!5e0!3m2!1sde!2sde!4v1678886400000!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <p style="margin-top: 20px;">Müller Breitmeier Steuerberater<br>Königstraße 1, 30159 Hannover</p>
+                <p><a href="tel:+05113642430">0511 3642430</a></p>
+                <p><a href="mailto:a.breitmeier@mb-steuern.de">a.breitmeier@mb-steuern.de</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <h3>Müller Breitmeier</h3>
+                <p>Ihr verlässlicher Partner für Steuern in Hannover.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Schnelllinks</h4>
+                <ul>
+                    <li><a href="#hero">Start</a></li>
+                    <li><a href="#leistungen">Leistungen</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Kontakt</h4>
+                <p>Müller Breitmeier Steuerberater</p>
+                <p>Königstraße 1</p>
+                <p>30159 Hannover</p>
+                <p><a href="tel:+05113642430">0511 3642430</a></p>
+                <p><a href="mailto:a.breitmeier@mb-steuern.de">a.breitmeier@mb-steuern.de</a></p>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 Müller Breitmeier Steuerberater. Alle Rechte vorbehalten.
+        </div>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="container">
+            <p>Diese Website verwendet Cookies, um Ihnen die bestmögliche Erfahrung zu bieten. Durch die weitere Nutzung stimmen Sie unserer Verwendung von Cookies zu. Mehr erfahren Sie in unserer <a href="#">Datenschutzerklärung</a>.</p>
+            <button id="acceptCookie">Akzeptieren</button>
+        </div>
+    </div>
+
+    <!-- Sticky CTA Bar for Mobile -->
+    <div id="stickyCta" class="cta-button" style="position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; padding: 15px; background-color: var(--accent-color); color: var(--bg-white); z-index: 998; display: none;">
+        Jetzt Termin vereinbaren
+    </div>
+
+    <script>
+        // Navigation Scroll
+        const navbar = document.getElementById('navbar');
+        const stickyCta = document.getElementById('stickyCta');
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Show sticky CTA on mobile when scrolling down
+            if (window.innerWidth <= 992) {
+                if (window.scrollY > 200) { // Show after some initial scroll
+                    stickyCta.style.display = 'block';
+                } else {
+                    stickyCta.style.display = 'none';
+                }
+            }
+        });
+
+        // Mobile Menu Toggle
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Sticky CTA click
+        stickyCta.addEventListener('click', () => {
+            document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Cookie Banner
+        const cookieBanner = document.getElementById('cookieBanner');
+        const acceptCookieButton = document.getElementById('acceptCookie');
+
+        if (localStorage.getItem('cookieAccepted')) {
+            cookieBanner.style.display = 'none';
+        } else {
+            cookieBanner.classList.add('show');
+        }
+
+        acceptCookieButton.addEventListener('click', () => {
+            cookieBanner.classList.remove('show');
+            localStorage.setItem('cookieAccepted', 'true');
+            setTimeout(() => { cookieBanner.style.display = 'none'; }, 300);
+        });
+
+        // Fade-in on Scroll (IntersectionObserver)
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Unobserve after it's visible
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        fadeElements.forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
