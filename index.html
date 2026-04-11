@@ -1080,5 +1080,26 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 });
 </script>
+
+<!-- Impressum Modal -->
+<div id="impressum-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);overflow-y:auto">
+  <div style="max-width:700px;margin:40px auto;background:#fff;color:#222;border-radius:12px;padding:40px;position:relative;font-family:system-ui,-apple-system,sans-serif;line-height:1.6">
+    <button onclick="document.getElementById(impressum-modal).style.display=none" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:#666">&times;</button>
+    <h2 style="margin-top:0;font-size:1.5rem">Impressum</h2>
+    <p><strong>Angaben gem&auml;&szlig; &sect; 5 TMG</strong></p>
+    <p>[VERIFIZIEREN] Name des Inhabers<br>[VERIFIZIEREN] Stra&szlig;e Nr.<br>[VERIFIZIEREN] PLZ Stadt</p>
+    <p><strong>Kontakt:</strong><br>Telefon: [VERIFIZIEREN]<br>E-Mail: [VERIFIZIEREN]</p>
+    <p><strong>Umsatzsteuer-ID:</strong><br>gem&auml;&szlig; &sect;27a UStG: [VERIFIZIEREN]</p>
+    <p><strong>Verantwortlich f&uuml;r den Inhalt nach &sect; 55 Abs. 2 RStV:</strong><br>[VERIFIZIEREN] Name<br>[VERIFIZIEREN] Adresse</p>
+    <h3>Haftungsausschluss</h3>
+    <p><strong>Haftung f&uuml;r Inhalte:</strong> Die Inhalte unserer Seiten wurden mit gr&ouml;&szlig;ter Sorgfalt erstellt. F&uuml;r die Richtigkeit, Vollst&auml;ndigkeit und Aktualit&auml;t der Inhalte k&ouml;nnen wir jedoch keine Gew&auml;hr &uuml;bernehmen.</p>
+    <p><strong>Haftung f&uuml;r Links:</strong> Unser Angebot enth&auml;lt Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben.</p>
+  </div>
+</div>
+
+<div style="text-align:center;padding:12px 0;font-size:13px;opacity:0.7;font-family:system-ui,sans-serif">
+  <a href="#" onclick="document.getElementById(impressum-modal).style.display=flex;return false" style="color:inherit;text-decoration:underline;margin:0 12px">Impressum</a>
+  <a href="#" onclick="document.getElementById(datenschutz-modal).style.display=flex;return false" style="color:inherit;text-decoration:underline;margin:0 12px">Datenschutz</a>
+</div>
 </body>
 </html>
